@@ -18,6 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Prepare report files
+        run: |
+          touch report_html.html report_json.json
+          chmod a+w report_html.html report_json.json
+
       - name: ZAP Baseline Scan
         run: |
           docker run --rm \
