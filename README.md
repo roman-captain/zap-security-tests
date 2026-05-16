@@ -14,14 +14,14 @@ No test scripts needed - ZAP finds issues automatically and produces a report.
 
 ## Stack
 
-- **OWASP ZAP** - security scanner
-- **zaproxy/action-baseline** - official GitHub Action
+- **OWASP ZAP** - security scanner (runs via Docker)
 - **GitHub Actions** - CI/CD
 
 ## CI behavior
 
 - Scan runs on every push, PR, and nightly at 06:00 UTC
-- `fail_action: false` - pipeline stays green; Juice Shop is intentionally vulnerable
+- ZAP runs directly via `docker run` - no GitHub Action wrapper
+- `|| true` keeps pipeline green; Juice Shop is intentionally vulnerable
 - Full HTML report uploaded as a CI artifact after every run
 - Download the report from the Actions tab to see all findings (Low / Medium / High)
 
